@@ -22,8 +22,6 @@ describe('Login page test' , () => {
       cy.contains("Email can't be blank").should('be.visible') 
     })
 
-    
-
     it('Password field can\'t be left empty' , () => {
         cy.visit('https://staging.paymi.com/users/sign_in?lang=en/')
         cy.get('#user_email').type('registered@email.com')
@@ -61,12 +59,9 @@ describe('Login page test' , () => {
         cy.contains('Forgot your password?').should('be.visible')
     })
 
-    
     it('Enter "Create an account" button' , () => {
         cy.visit('https://staging.paymi.com/users/sign_in?lang=en/')
         cy.contains('Create an account').click()
         cy.contains('Sign up with email.').should('be.visible')
     })
-
-    
 })

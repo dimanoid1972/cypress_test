@@ -36,6 +36,7 @@ describe('Sign Up page test' , () => {
         cy.get('.register').click()
         cy.contains("Email is invalid").should('be.visible')
     })
+
     it('Email should be valid(without com)' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.get('#user_email').type('registered@email.')
@@ -44,6 +45,7 @@ describe('Sign Up page test' , () => {
         cy.get('.register').click()
         cy.contains("Email is invalid").should('be.visible')
     })
+
     it('Email should be valid(without first word)' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.get('#user_email').type('@email.com')
@@ -116,9 +118,7 @@ describe('Sign Up page test' , () => {
         cy.get('#user_password').type('fakePASS7!')
         cy.get('.fa-eye-slash').click()
         cy.get('#user_password').should('have.value', 'fakePASS7!')
-      
-    })
-        
+    })  
             
     it('Enter "Terms and Conditions"', () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
@@ -149,7 +149,6 @@ describe('Sign Up page test' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.contains('Français').click()
         cy.contains('Commencez à créer votre compte:').should('be.visible')
-        
     })
 
     it('Enter "Log In" button' , () => {
