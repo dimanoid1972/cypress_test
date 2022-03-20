@@ -9,7 +9,7 @@ describe('Sign Up page test' , () => {
         cy.contains('My Account').should('be.visible')
     })
 
-    it('Email should be valid(without @)' , () => {
+    it('Error message appears if email address is invalid (without @)' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.get('#user_email').type('registeredemail.com')
         cy.get('#user_password').type('fakePASS7!')
@@ -18,17 +18,16 @@ describe('Sign Up page test' , () => {
         cy.contains("Email is invalid").should('be.visible')
     })
 
-    it('Email should be valid(without email.com)' , () => {
-    cy.visit('https://staging.paymi.com/users/sign_up')
-    cy.get('#user_email').type('registered@')
-    cy.get('#user_password').type('fakePASS7!')
-    cy.get('#terms-label').click()
-    cy.get('.register').click()
-    cy.contains("Email is invalid").should('be.visible')
-    
+    it('Error message appears if email address is invalid (without email.com)' , () => {
+        cy.visit('https://staging.paymi.com/users/sign_up')
+        cy.get('#user_email').type('registered@')
+        cy.get('#user_password').type('fakePASS7!')
+        cy.get('#terms-label').click()
+        cy.get('.register').click()
+        cy.contains("Email is invalid").should('be.visible')
     })
 
-    it('Email should be valid(without .com)' , () => {
+    it('Error message appears if email address is invalid (without .com)' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.get('#user_email').type('registered@email')
         cy.get('#user_password').type('fakePASS7!')
@@ -37,7 +36,7 @@ describe('Sign Up page test' , () => {
         cy.contains("Email is invalid").should('be.visible')
     })
 
-    it('Email should be valid(without com)' , () => {
+    it('Error message appears if email address is invalid (without com)' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.get('#user_email').type('registered@email.')
         cy.get('#user_password').type('fakePASS7!')
@@ -46,7 +45,7 @@ describe('Sign Up page test' , () => {
         cy.contains("Email is invalid").should('be.visible')
     })
 
-    it('Email should be valid(without first word)' , () => {
+    it('Error message appears if email address is invalid (without first word)' , () => {
         cy.visit('https://staging.paymi.com/users/sign_up')
         cy.get('#user_email').type('@email.com')
         cy.get('#user_password').type('fakePASS7!')
@@ -133,16 +132,6 @@ describe('Sign Up page test' , () => {
         cy.get('#user_password').type('fakePASS!7')
         cy.get('.register').click()
         cy.contains('Terms and conditions must be accepted').should('be.visible')
-    })
-
-    it('Enter "Opt in to get the best of Paymi offers, promotions, news and more"', () => {
-        cy.visit('https://staging.paymi.com/users/sign_up')
-        let email = `fake${Date.now()}@email.com`
-        cy.get('#user_email').type(email)
-        cy.get('#user_password').type('fakePASS!7')
-        cy.get('#terms-label').click()
-        cy.get('.register').click()
-        cy.contains('My Account').should('be.visible')
     })
 
     it('French language version is available after clicking "Francaic"' , () => {

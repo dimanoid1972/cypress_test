@@ -56,7 +56,7 @@ describe('Login page test' , () => {
     it('Enter the button "Forgot your password?"' , () => {
         cy.visit('https://staging.paymi.com/users/sign_in?lang=en/')
         cy.contains('Forgot your password?').click()
-        cy.contains('Forgot your password?').should('be.visible')
+        cy.contains('Reset Password').should('be.visible')
     })
 
     it('Enter "Create an account" button' , () => {
